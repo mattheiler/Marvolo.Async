@@ -68,30 +68,28 @@ namespace Marvolo.Async
             return await resultSelector(await source);
         }
 
-        public static Task WaitAllWithProgress(Action<double> progress, ICollection<Task> tasks)
+        public static void WaitAllWithProgress(Action<double> progress, ICollection<Task> tasks)
         {
-            return WaitAllWithProgress(new Progress<double>(count => progress(count / tasks.Count)), 0, count => ++count, tasks);
+            WaitAllWithProgress(new Progress<double>(count => progress(count / tasks.Count)), 0, count => ++count, tasks);
         }
 
-        public static Task WaitAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
+        public static void WaitAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
         {
-            return WaitAllWithProgress(progress, seed, progressed, tasks.AsEnumerable());
+             WaitAllWithProgress(progress, seed, progressed, tasks.AsEnumerable());
         }
 
-        public static Task WaitAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
+        public static void WaitAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
         {
-            return WaitAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks.AsEnumerable());
+             WaitAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks.AsEnumerable());
         }
 
-        public static Task WaitAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
+        public static void WaitAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
         {
-            return WaitAllWithProgress(progress, seed, progressed, tasks.AsEnumerable());
+             WaitAllWithProgress(progress, seed, progressed, tasks.AsEnumerable());
         }
 
-        public static async Task WaitAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
+        public static void WaitAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
         {
-            await Task.Yield();
-
             Task.WaitAll(tasks.Select(task => task.Do(() => progress.Report(seed = progressed(seed)))).ToArray());
         }
 

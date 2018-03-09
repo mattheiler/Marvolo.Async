@@ -29,7 +29,7 @@ namespace Marvolo.Async
                 // state.StepsCompleted = 0;
                 // state.StepsCount = tasks.Length;
 
-                await Async.WaitAllWithProgress(Console.WriteLine /* steps => state.StepsCompleted = steps */, 0 /* state.StepsCompleted */, steps => steps + 1, tasks);
+                Async.WaitAllWithProgress(Console.WriteLine /* steps => state.StepsCompleted = steps */, 0 /* state.StepsCompleted */, steps => steps + 1, tasks);
             }
             catch (AggregateException e)
             {
@@ -41,7 +41,7 @@ namespace Marvolo.Async
             // better yet
             try
             {
-                await Async.WaitAllWithProgress(Console.WriteLine /* progress => state.Progress = progress */, new[]
+                Async.WaitAllWithProgress(Console.WriteLine /* progress => state.Progress = progress */, new[]
                 {
                     DoThing1(),
                     DoThing2(),
