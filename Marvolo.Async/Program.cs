@@ -108,13 +108,13 @@ namespace Marvolo.Async
 
         public static async Task DoThing2()
         {
-            await Task.Yield();
+            await Task.Delay(100);
             throw new InvalidOperationException();
         }
 
         public static async Task DoThing3()
         {
-            await Task.Yield();
+            await Task.Delay(100);
             throw new InvalidOperationException();
         }
     }
