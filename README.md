@@ -1,3 +1,3 @@
 # Marvolo.Async
 
-.NET Core Async helpers and best practices.
+.NET Core async helpers and best practices.
