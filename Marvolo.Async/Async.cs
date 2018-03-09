@@ -80,7 +80,7 @@ namespace Marvolo.Async
 
         public static void WaitAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
         {
-             WaitAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks.AsEnumerable());
+             WaitAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks);
         }
 
         public static void WaitAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
@@ -110,7 +110,7 @@ namespace Marvolo.Async
 
         public static Task WhenAllWithProgress<TProgress>(Action<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, IEnumerable<Task> tasks)
         {
-            return WhenAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks.AsEnumerable());
+            return WhenAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks);
         }
 
         public static Task WhenAllWithProgress<TProgress>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TProgress> progressed, params Task[] tasks)
@@ -130,7 +130,7 @@ namespace Marvolo.Async
 
         public static Task<TResult[]> WhenAllWithProgress<TProgress, TResult>(Action<TProgress> progress, TProgress seed, Func<TProgress, TResult, TProgress> progressed, IEnumerable<Task<TResult>> tasks)
         {
-            return WhenAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks.AsEnumerable());
+            return WhenAllWithProgress(new Progress<TProgress>(progress), seed, progressed, tasks);
         }
 
         public static Task<TResult[]> WhenAllWithProgress<TProgress, TResult>(IProgress<TProgress> progress, TProgress seed, Func<TProgress, TResult, TProgress> progressed, params Task<TResult>[] tasks)
