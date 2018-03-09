@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marvolo.Async", "Marvolo.Async\Marvolo.Async.csproj", "{F098E850-1A60-4C3E-BFB6-A63ACE93F5B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".git", ".git", "{EC5A2295-9C1A-4FF2-88BB-F441D9026339}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F098E850-1A60-4C3E-BFB6-A63ACE93F5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F098E850-1A60-4C3E-BFB6-A63ACE93F5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F098E850-1A60-4C3E-BFB6-A63ACE93F5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F098E850-1A60-4C3E-BFB6-A63ACE93F5B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA582D21-7266-49B7-8160-A8735CC8A815}
+	EndGlobalSection
+EndGlobal
