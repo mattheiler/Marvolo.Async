@@ -42,16 +42,6 @@ namespace Marvolo.Async
             return Run(func).GetAwaiter().GetResult();
         }
 
-        public static Task<TResult> Select<TSource, TResult>(this Task<TSource> source, Func<TSource, TResult> resultSelector)
-        {
-            return source.Then(resultSelector);
-        }
-
-        public static Task<TResult> SelectMany<TSource, TIntermediate, TResult>(this Task<TSource> source, Func<TSource, Task<TIntermediate>> intermediateSelector, Func<TSource, TIntermediate, TResult> resultSelector)
-        {
-            return source.Then(async result => resultSelector(result, await intermediateSelector(result)));
-        }
-
         public static async Task<TResult> Then<TResult>(this Task source, Func<TResult> resultSelector)
         {
             await source;

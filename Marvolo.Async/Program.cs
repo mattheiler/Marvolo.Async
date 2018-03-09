@@ -26,8 +26,8 @@ namespace Marvolo.Async
                     DoThing3()
                 };
 
-                // state.StepsCompleted = 0;
-                // state.StepsCount = tasks.Length;
+                // state.Steps.Completed = 0;
+                // state.Steps.Count = tasks.Length;
 
                 Async.WaitAllWithProgress(Console.WriteLine /* steps => state.StepsCompleted = steps */, 0 /* state.StepsCompleted */, steps => steps + 1, tasks);
             }
@@ -77,18 +77,6 @@ namespace Marvolo.Async
             {
                 // do stuff
             }
-
-            Console.WriteLine(); // line break
-
-            // linq? meh...
-            var characters = await
-            (
-                from upper in GetLetters()
-                from lower in GetLetters().Then(letters => letters.Select(letter => letter.ToLower()))
-                select upper.Concat(lower).ToList()
-            );
-
-            Console.WriteLine(string.Join(", ", characters));
 
             Console.WriteLine(); // line break
 
