@@ -41,7 +41,7 @@ namespace Marvolo.Async
             // better yet
             try
             {
-                await Async.WaitAllWithProgress(Console.WriteLine, new[]
+                await Async.WaitAllWithProgress(Console.WriteLine /* progress => state.Progress = progress */, new[]
                 {
                     DoThing1(),
                     DoThing2(),
@@ -50,7 +50,7 @@ namespace Marvolo.Async
             }
             catch (AggregateException e)
             {
-                Console.WriteLine(string.Join(Environment.NewLine /* progress => state.Progress = progress */, e.Flatten().InnerExceptions.Select(exception => exception.Message)));
+                Console.WriteLine(string.Join(Environment.NewLine, e.Flatten().InnerExceptions.Select(exception => exception.Message)));
             }
 
             Console.WriteLine(); // line break
@@ -58,7 +58,7 @@ namespace Marvolo.Async
             // best
             try
             {
-                await Async.WhenAllWithProgress(Console.WriteLine, new[]
+                await Async.WhenAllWithProgress(Console.WriteLine /* progress => state.Progress = progress */, new[]
                 {
                     DoThing1(),
                     DoThing2(),
@@ -67,7 +67,7 @@ namespace Marvolo.Async
             }
             catch (InvalidOperationException e)
             {
-                Console.WriteLine(string.Join(Environment.NewLine /* progress => state.Progress = progress */, e.Message));
+                Console.WriteLine(string.Join(Environment.NewLine, e.Message));
             }
 
             Console.WriteLine(); // line break
