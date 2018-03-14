@@ -9,7 +9,7 @@ namespace Marvolo.Async
     {
         public static void Main(string[] args)
         {
-            Async.RunSynchronously(DoThings);
+            DoThings().GetAwaiter().GetResult();
         }
 
         private static readonly AsyncLock Stuff = new AsyncLock();

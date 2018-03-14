@@ -22,26 +22,6 @@ namespace Marvolo.Async
             return result;
         }
 
-        public static AsyncAwaitable Run(Func<Task> func)
-        {
-            return new AsyncAwaitable(Task.Run(func));
-        }
-
-        public static AsyncAwaitable<TResult> Run<TResult>(Func<Task<TResult>> func)
-        {
-            return new AsyncAwaitable<TResult>(Task.Run(func));
-        }
-
-        public static void RunSynchronously(Func<Task> func)
-        {
-            Run(func).GetAwaiter().GetResult();
-        }
-
-        public static TResult RunSynchronously<TResult>(Func<Task<TResult>> func)
-        {
-            return Run(func).GetAwaiter().GetResult();
-        }
-
         public static async Task<TResult> Then<TResult>(this Task source, Func<TResult> resultSelector)
         {
             await source;

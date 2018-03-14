@@ -10,8 +10,6 @@ namespace Marvolo.Async
     {
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
-        public bool IsEntered => _semaphore.CurrentCount == 0;
-
         ~AsyncLock()
         {
             _semaphore.Dispose();
@@ -19,12 +17,12 @@ namespace Marvolo.Async
 
         public IDisposable Lock()
         {
-            return Async.RunSynchronously(EnterAsync);
+            return EnterAsync().GetAwaiter().GetResult();
         }
 
         public AsyncAwaitable<IDisposable> LockAsync()
         {
-            return Async.Run(EnterAsync);
+            return new AsyncAwaitable<IDisposable>(EnterAsync());
         }
 
         private async Task<IDisposable> EnterAsync()
